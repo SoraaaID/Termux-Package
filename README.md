@@ -22,11 +22,13 @@ Script **Termux-Package** ini dibuat untuk mempermudah kamu menyiapkan seluruh p
 
 ## ✨ Fitur Utama
 
-- ⚡ **Auto-Installer Modern**: Menggunakan modul Python `subprocess` (bukan `os.system` usang) dengan eksekusi yang bersih dan stabil.
-- 🛡️ **Fault-Tolerant (Tahan Error)**: Jika ada salah satu package yang gagal atau sudah terpasang, instalasi tidak akan berhenti mendadak — script akan otomatis melanjutkan ke package berikutnya sampai selesai.
+- ⚡ **Instalasi Batch & Paralel (v2)**: Package sistem dipasang berkelompok dalam satu panggilan `pkg` (bukan satu-satu), dan library Python dipasang paralel dengan beberapa worker — jauh lebih cepat dari versi sebelumnya.
+- ⏭️ **Lewati yang Sudah Terpasang**: Status package dibaca sekali di awal; yang sudah ada di perangkat dilewati otomatis, jadi menjalankan ulang script ini terasa instan.
+- ⌨️ **Mode CLI Non-Interaktif**: Selain menu, installer bisa dijalankan dengan flag (`--all`, `--system`, `--python`, `--dry-run`) untuk otomasi atau pemakaian cepat.
+- 🛡️ **Fault-Tolerant (Tahan Error)**: Jika ada salah satu package yang gagal, instalasi tidak berhenti mendadak — kelompok yang gagal dipecah dan dicoba ulang satu per satu, lalu script lanjut sampai selesai.
 - 📦 **Struktur Modular**: Daftar package sistem dan modul Python dipisahkan ke dalam file teks (`packages.txt` & `requirements.txt`), sehingga sangat mudah ditambah atau dikurangi tanpa perlu menyentuh kode program.
-- 🎨 **Tampilan Visual Menarik**: Mendukung banner otomatis dengan kombinasi `toilet` + `lolcat` (jika terpasang), atau tampilan ASCII modern bawaan yang tetap rapi di Termux baru.
-- 📊 **Laporan Ringkasan**: Menampilkan rekapitulasi jumlah package yang berhasil maupun yang gagal di akhir proses.
+- 🎨 **Tampilan Visual Menarik**: Mendukung banner otomatis dengan `toilet` (jika terpasang), atau tampilan ASCII bawaan yang tetap rapi di Termux baru.
+- 📊 **Laporan Ringkasan + Log**: Menampilkan rekap jumlah package yang terinstal, dilewati, dan gagal beserta durasinya; semua aktivitas juga dicatat ke `install.log`.
 
 ---
 
@@ -70,10 +72,22 @@ Saat script dijalankan, kamu akan disajikan menu interaktif berikut:
 
 | Opsi | Menu | Keterangan |
 | :---: | :--- | :--- |
-| **`[1]`** | **Install Python & Pip Packages** | Menginstal dependensi library Python yang terdaftar di `requirements.txt` (seperti `requests`, `bs4`, `pyngrok`, dll). |
-| **`[2]`** | **Install Semua Package** | Melakukan update index Termux, memasang seluruh package sistem Linux (`packages.txt`), kemudian melanjutkan instalasi library Python. *(Direkomendasikan untuk pengguna baru)* |
-| **`[3]`** | **Tampilkan Banner Saja** | Hanya mencetak banner SoraDev-ID ke layar terminal tanpa melakukan instalasi apa pun. |
+| **`[1]`** | **Install Python & Pip Packages** | Menginstal library Python dari `requirements.txt` secara paralel (seperti `requests`, `bs4`, `pyngrok`, dll). |
+| **`[2]`** | **Install Semua Package** | Mode cepat: update index Termux, pasang seluruh package sistem (`packages.txt`) secara batch, lalu lanjut library Python. *(Direkomendasikan untuk pengguna baru)* |
+| **`[3]`** | **Tampilkan Banner Saja** | Hanya mencetak banner SoraaaID ke layar terminal tanpa melakukan instalasi apa pun. |
+| **`[4]`** | **Install Package Sistem Saja** | Hanya memasang package sistem dari `packages.txt` secara batch, tanpa library Python. |
 | **`[0]`** | **Keluar** | Menutup program installer dengan rapi. |
+
+### ⌨️ Mode CLI (Non-Interaktif)
+
+Untuk pemakaian cepat atau otomasi, jalankan dengan flag — tanpa menu dan tanpa prompt:
+
+```bash
+python install.py --all              # update + sistem + python sekaligus
+python install.py --system           # hanya package sistem
+python install.py --python --jobs 6  # hanya pip, 6 worker paralel
+python install.py --all --dry-run    # lihat rencana instalasi saja, tidak memasang apa pun
+```
 
 ---
 
@@ -129,5 +143,5 @@ Proyek ini didistribusikan di bawah lisensi resmi **MIT License**. Silakan gunak
 ---
 
 <p align="center">
-  Dibuat dengan ❤️ oleh <b><a href="https://github.com/SoraDev-ID">SoraDev-ID</a></b>
+  Dibuat dengan ❤️ oleh <b><a href="https://github.com/SoraaaID">SoraaaID</a></b>
 </p>
