@@ -12,7 +12,7 @@
 
 ## 📖 Apa Itu Package di Termux?
 
-Bagi kamu yang baru pertama kali menggunakan **Termux**, aplikasi ini pada dasarnya adalah terminal Linux mini di perangkat Android. 
+Bagi kamu yang baru pertama kali menggunakan **Termux**, aplikasi ini pada dasarnya adalah terminal Linux mini di perangkat Android.
 
 Secara default, Termux hanya menyediakan perintah-perintah paling dasar. Agar kamu bisa mengunduh file (`curl`, `wget`), mengedit kode (`nano`), mengkloning repository (`git`), menjalankan script (`python`, `php`, `bash`), hingga melakukan riset jaringan (`nmap`), kamu perlu menginstal program-program tersebut yang disebut sebagai **package**.
 
@@ -30,6 +30,17 @@ Script **Termux-Package** ini dibuat untuk mempermudah kamu menyiapkan seluruh p
 
 ---
 
+## 🖥️ Preview
+
+<p align="center">
+  <img src="assets/preview-terminal.png" alt="Tampilan banner dan menu utama Termux-Package di Termux" width="820">
+</p>
+<p align="center">
+  <em>Banner dan menu utama saat <code>python install.py</code> dijalankan di Termux.</em>
+</p>
+
+---
+
 ## 🛠️ Cara Instalasi & Menjalankan
 
 Buka aplikasi **Termux** di HP Android kamu, lalu salin dan jalankan perintah berikut secara berurutan:
@@ -42,7 +53,7 @@ pkg install git python -y
 
 ### 2. Kloning Repository
 ```bash
-git clone https://github.com/SoraDev-ID/Termux-Package.git
+git clone https://github.com/SoraaaID/Termux-Package.git
 ```
 
 ### 3. Masuk ke Folder & Jalankan Script
@@ -105,7 +116,7 @@ Kamu bisa dengan bebas menambah atau menghapus tools sesuai kebutuhan:
 Kontribusi selalu terbuka lebar untuk siapa saja!
 1. Fork repository ini ke akun GitHub kamu.
 2. Buat branch fitur baru (`git checkout -b fitur-keren`).
-3. Commit perubahan kamu (`git commit -m 'Menambahkan package полез'`).
+3. Commit perubahan kamu (`git commit -m 'Menambahkan package baru'`).
 4. Push ke branch kamu (`git push origin fitur-keren`).
 5. Buat **Pull Request** baru.
 
